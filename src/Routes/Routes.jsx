@@ -19,7 +19,7 @@ export const router = createBrowserRouter([
             {
                 path: '/all-schedule',
                 Component: Schedule,
-                loader: () => fetch('http://localhost:3000/schedule'),
+                // loader: () => fetch(),
                 hydrateFallbackElement: <p>Loading...</p>
             },
             {

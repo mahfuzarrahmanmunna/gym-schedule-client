@@ -1,16 +1,24 @@
-import React, { useState } from 'react';
-import { useLoaderData } from 'react-router';
+import React, { useEffect, useState } from 'react';
 import ScheduleTable from './ScheduleTable';
 
 const Schedule = () => {
-    const initialSchedule = useLoaderData()
-    const [schedule, setSchedule] = useState(initialSchedule)
+    const [schedule, setSchedule] = useState([])
     const [search, setSearch] = useState('')
-    console.log(schedule);
+    useEffect(() => {
+        fetch(`http://localhost:3000/schedule?searchParams=${search}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setSchedule(data)
+            })
+    }, [search])
+
+
+    // console.log(schedule);
     console.log(search);
     return (
         <>
-            <div className="w-[400px] mx-auto mb-4">
+            <div className="w-[400px] mx-auto mb-4 mt-12">
                 <input
                     onChange={(e) => setSearch(e.target.value)}
                     type="text"
