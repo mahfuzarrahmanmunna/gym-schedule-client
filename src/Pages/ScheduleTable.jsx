@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 const ScheduleTable = ({ item, index, setSchedule, schedule }) => {
     const { title, date, day, time, _id } = item || {}
     // const isCompleted = false;
-    console.log(schedule);
+    // console.log(item);
 
     const handleCompleted = (id) => {
         console.log(id);
@@ -21,15 +21,20 @@ const ScheduleTable = ({ item, index, setSchedule, schedule }) => {
             .then(res => res.json())
             .then(data => {
                 console.log('completed data', data);
+                console.log(item);
                 if (data?.modifiedCount) {
                     Swal.fire('data updated')
+                    const updated = schedule.map(item =>
+                        item._id === id ? { ...item, isCompleted: true } : item
+                    );
+                    setSchedule(updated);
                 }
             })
     }
 
 
     const handleDelete = (id) => {
-        console.log(id);
+        // console.log(id);
 
         // Delete functionality here
         Swal.fire({
@@ -47,7 +52,7 @@ const ScheduleTable = ({ item, index, setSchedule, schedule }) => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
+                        // console.log(data);
                         if (data.deletedCount) {
                             Swal.fire({
                                 title: "Deleted!",
@@ -78,7 +83,7 @@ const ScheduleTable = ({ item, index, setSchedule, schedule }) => {
                     <FaFile size={15} />
                 </Link>
                 <button onClick={() => handleCompleted(_id)} className='btn btn-xs'>
-                    {schedule?.isCompleted ?
+                    {item?.isCompleted ?
                         <MdOutlineDoneAll /> : <MdDone size={15} />
                     }
                 </button>
