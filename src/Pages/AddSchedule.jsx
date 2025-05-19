@@ -28,7 +28,7 @@ const AddSchedule = () => {
         console.log(schedule);
 
         // post here
-        fetch('http://localhost:3000/schedule', {
+        fetch('https://gym-server-liart.vercel.app/schedule', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

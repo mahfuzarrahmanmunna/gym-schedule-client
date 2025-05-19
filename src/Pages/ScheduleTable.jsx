@@ -11,7 +11,7 @@ const ScheduleTable = ({ item, index, setSchedule, schedule }) => {
 
     const handleCompleted = (id) => {
         console.log(id);
-        fetch(`http://localhost:3000/schedule/${id}`, {
+        fetch(`https://gym-server-liart.vercel.app/schedule/schedule${id}`, {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json'
@@ -47,7 +47,7 @@ const ScheduleTable = ({ item, index, setSchedule, schedule }) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/schedule/${id}`, {
+                fetch(`https://gym-server-liart.vercel.app/schedule/schedule${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())

@@ -30,7 +30,7 @@ const UpdateSchedule = () => {
         }
 
         // Updated data here
-        fetch(`http://localhost:3000/schedule/${_id}`, {
+        fetch(`https://gym-server-liart.vercel.app/schedule/schedule${_id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'

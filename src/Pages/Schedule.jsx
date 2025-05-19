@@ -5,7 +5,7 @@ const Schedule = () => {
     const [schedule, setSchedule] = useState([])
     const [search, setSearch] = useState('')
     useEffect(() => {
-        fetch(`http://localhost:3000/schedule?searchParams=${search}`)
+        fetch(`https://gym-server-liart.vercel.app/schedule?searchParams=${search}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);

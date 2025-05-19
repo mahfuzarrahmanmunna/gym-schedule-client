@@ -29,7 +29,7 @@ export const router = createBrowserRouter([
             {
                 path: '/updated/:id',
                 Component: UpdateSchedule,
-                loader: ({ params }) => fetch(`http://localhost:3000/schedule/${params.id}`),
+                loader: ({ params }) => fetch(`https://gym-server-liart.vercel.app/schedule/schedule${params.id}`),
                 hydrateFallbackElement: <p>Loading...</p>
             }
         ]
