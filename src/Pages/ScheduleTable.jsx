@@ -11,10 +11,10 @@ const ScheduleTable = ({ item, index, setSchedule, schedule }) => {
 
     const handleCompleted = (id) => {
         console.log(id);
-        fetch(`https://gym-server-liart.vercel.app/schedule/schedule${id}`, {
+        fetch(`https://gym-server-liart.vercel.app/schedule/${id}`, {
             method: "PATCH",
             headers: {
-                'content-type': 'application/json'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({})
         })
@@ -29,6 +29,9 @@ const ScheduleTable = ({ item, index, setSchedule, schedule }) => {
                     );
                     setSchedule(updated);
                 }
+            })
+            .catch(er => {
+                console.log(er);
             })
     }
 
